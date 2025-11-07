@@ -10,14 +10,24 @@
   },
   "dependencies": {
     "@types/turndown": "^5.0.6",
+    "axios": "^1.13.2",
+    "cheerio": "^1.1.2",
+    "cheerio-select": "^2.1.0",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
+    "dom-serializer": "^2.0.0",
+    "domhandler": "^5.0.3",
+    "domutils": "^3.2.2",
+    "encoding-sniffer": "^0.2.1",
     "lucide-react": "^0.553.0",
     "next": "16.0.1",
+    "parse5-htmlparser2-tree-adapter": "^8.0.0",
+    "parse5-parser-stream": "^8.0.0",
     "react": "19.2.0",
     "react-dom": "19.2.0",
     "tailwind-merge": "^3.3.1",
-    "turndown": "^7.2.2"
+    "turndown": "^7.2.2",
+    "whatwg-mimetype": "^4.0.0"
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4",

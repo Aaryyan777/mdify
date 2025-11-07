@@ -12,12 +12,34 @@ export async function GET(request: Request) {
     );
   }
 
-  const result = await convertToMD(url);
+  try {
+    const result = await convertToMD(url);
 
-  if ("error" in result && result.error) {
-    return NextResponse.json({ error: true, markdown: result.markdown });
-  } else {
-    // result is { error: false, markdown: string, title: string }
-    return NextResponse.json({ error: false, markdown: result.markdown, title: result.title });
+    if ("error" in result && result.error) {
+      // rate limit error
+      const isRateLimit = result.markdown.toLowerCase().includes("rate limit");
+      const status = isRateLimit ? 429 : 500;
+
+      return NextResponse.json(
+        { error: true, markdown: result.markdown },
+        { status }
+      );
+    } else {
+      // result is { error: false, markdown: string, title: string }
+      return NextResponse.json({
+        error: false,
+        markdown: result.markdown,
+        title: result.title,
+      });
+    }
+  } catch (error) {
+    console.error("Unexpected error in convert route:", error);
+    return NextResponse.json(
+      {
+        error: true,
+        markdown: "An unexpected error occurred. Please try again later.",
+      },
+      { status: 500 }
+    );
   }
 }
