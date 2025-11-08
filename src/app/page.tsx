@@ -27,8 +27,9 @@ export default function Page() {
   }, []);
 
   function navigateToEditor() {
-    if (url.trim() !== "") {
-      router.push(`/editor?url=${encodeURIComponent(url)}`);
+    const trimmedUrl = url.trim();
+    if (trimmedUrl !== "") {
+      router.push(`/editor?url=${encodeURIComponent(trimmedUrl)}`);
     }
   }
 
@@ -216,7 +217,7 @@ export default function Page() {
                     variant="outline"
                     size="sm"
                     className="mt-3 w-full text-xs sm:text-sm"
-                    onClick={() => window.open('https://buymeacoffee.com/vedantlavale', '_blank')}
+                    onClick={() => window.open('https://buymeacoffee.com/0xVedant', '_blank')}
                   >
                     Buy Me a Coffee
                   </Button>

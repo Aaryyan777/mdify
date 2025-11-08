@@ -76,7 +76,19 @@ function extendMaterial<T extends THREE.Material = THREE.Material>(
 }
 
 const CanvasWrapper: FC<{ children: ReactNode }> = ({ children }) => (
-  <Canvas dpr={[1, 2]} frameloop="always" className="w-full h-full relative">
+  <Canvas 
+    dpr={[1, 2]} 
+    frameloop="demand" 
+    className="w-full h-full relative"
+    onCreated={({ gl }) => {
+      gl.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+    }}
+    gl={{
+      antialias: false,
+      alpha: true,
+      powerPreference: "high-performance",
+    }}
+  >
     {children}
   </Canvas>
 );
@@ -328,8 +340,11 @@ const MergedPlanes = forwardRef<
     () => createStackedPlanesBufferGeometry(count, width, height, 0, 100),
     [count, width, height]
   );
-  useFrame((_, delta) => {
-    mesh.current.material.uniforms.time.value += 0.1 * delta;
+  useFrame((state, delta) => {
+    if (mesh.current?.material?.uniforms?.time) {
+      mesh.current.material.uniforms.time.value += 0.1 * delta;
+    }
+    state.invalidate(); // Only render when needed
   });
   return <mesh ref={mesh} geometry={geometry} material={material} />;
 });

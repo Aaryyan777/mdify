@@ -12,6 +12,16 @@ export async function GET(request: Request) {
     );
   }
 
+  // Basic URL format validation
+  try {
+    new URL(url);
+  } catch {
+    return NextResponse.json(
+      { error: true, markdown: "Invalid URL format. Please provide a valid URL." },
+      { status: 400 }
+    );
+  }
+
   try {
     const result = await convertToMD(url);
 

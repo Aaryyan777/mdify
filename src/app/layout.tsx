@@ -81,7 +81,6 @@ export const metadata: Metadata = {
   classification: "Productivity Tool",
   icons: {
     icon: "/favicon.ico",
-    apple: "/apple-touch-icon.png",
   },
   manifest: "/site.webmanifest",
 };
