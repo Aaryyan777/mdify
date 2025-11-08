@@ -36,7 +36,7 @@ export default function Page() {
     <div className="w-full h-screen fixed inset-0 overflow-hidden bg-black" itemScope itemType="https://schema.org/WebApplication">
       <meta itemProp="name" content="mdify" />
       <meta itemProp="description" content="Convert Medium articles to Markdown format instantly" />
-      <meta itemProp="url" content="https://medium-to-md-vert.vercel.app" />
+      <meta itemProp="url" content="https://mdify.vedant.works/" />
       <meta itemProp="applicationCategory" content="ProductivityApplication" />
       
       {/* GradientBlinds Background */}
