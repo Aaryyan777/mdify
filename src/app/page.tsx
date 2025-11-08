@@ -2,7 +2,7 @@
 import Beams from "@/components/Beams";
 import { Button } from "@/components/ui/button";
 import { useRouter } from "next/navigation";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import ClickSpark from "@/components/ClickSpark";
 import TextType from "@/components/TextType";
 import { Navbar01 } from "@/components/ui/shadcn-io/navbar-01";
@@ -18,6 +18,14 @@ export default function Page() {
   const [url, setUrl] = useState("");
   const router = useRouter();
 
+  // Prevent scrolling on landing page
+  useEffect(() => {
+    document.body.style.overflow = 'hidden';
+    return () => {
+      document.body.style.overflow = 'unset';
+    };
+  }, []);
+
   function navigateToEditor() {
     if (url.trim() !== "") {
       router.push(`/editor?url=${encodeURIComponent(url)}`);
@@ -25,7 +33,7 @@ export default function Page() {
   }
 
   return (
-    <div className="w-full min-h-screen relative overflow-hidden bg-black" itemScope itemType="https://schema.org/WebApplication">
+    <div className="w-full h-screen fixed inset-0 overflow-hidden bg-black" itemScope itemType="https://schema.org/WebApplication">
       <meta itemProp="name" content="mdify" />
       <meta itemProp="description" content="Convert Medium articles to Markdown format instantly" />
       <meta itemProp="url" content="https://mdify.vercel.app" />
@@ -55,8 +63,8 @@ export default function Page() {
       >
         <Navbar01/>
         
-        <main className="relative z-10 flex items-center justify-center min-h-screen px-4 sm:px-6 lg:px-8">
-          <section className="flex flex-col items-center justify-center max-w-4xl w-full text-center space-y-6 sm:space-y-8 font-bricolage">
+        <main className="relative z-10 flex items-center justify-center h-[calc(100vh-4rem)] px-4 sm:px-6 lg:px-8">
+          <section className="flex flex-col items-center justify-center max-w-4xl w-full text-center space-y-4 sm:space-y-6 font-bricolage">
             {/* Heading */}
             <header>
               <h1 className="sr-only">mdify - Convert Medium Articles to Markdown</h1>
@@ -66,12 +74,12 @@ export default function Page() {
                 pauseDuration={1500}
                 showCursor={true}
                 cursorCharacter="|"
-                className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-medium tracking-tight text-white px-2"
+                className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-medium tracking-tight text-white px-2"
               />
             </header>
             
             {/* Description */}
-            <p className="text-sm sm:text-base md:text-lg text-gray-300 max-w-2xl px-4 leading-relaxed">
+            <p className="text-xs sm:text-sm md:text-base lg:text-lg text-gray-300 max-w-2xl px-4 leading-relaxed">
               Transform any Medium article into clean, editable Markdown format instantly. Perfect for developers, writers, and content creators who need portable, standardized content.
             </p>
             
