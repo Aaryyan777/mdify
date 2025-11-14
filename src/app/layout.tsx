@@ -19,23 +19,41 @@ const bricolageGrotesque = Bricolage_Grotesque({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://mdify.vedant.works/'),
-  title: "mdify - Convert Medium Articles to Markdown | Free Online Tool",
-  description: "Convert any Medium article to clean, editable Markdown format instantly. Free online tool to transform Medium posts into Markdown files for your blog, documentation, or notes.",
+  metadataBase: new URL("https://mdify.vedant.works/"),
+  title:
+    "mdify - Convert Medium Articles to Markdown | Free Medium to MD Converter",
+  description:
+    "mdify is the best free tool to convert Medium articles to Markdown. Instantly transform Medium posts to MD format with our online converter. Clean, editable Markdown exports for developers and writers.",
   keywords: [
+    "mdify",
+    "mdify tool",
+    "mdify converter",
     "medium to markdown",
-    "convert medium article",
-     "convert medium article to md",
-      "convert medium blogs to md",
-       "medium to md",
+    "medium to md",
+    "medium to markdown converter",
+    "convert medium to markdown",
+    "convert medium article to markdown",
+    "convert medium article to md",
+    "convert medium blogs to md",
+    "convert medium post to markdown",
+    "medium markdown converter",
+    "medium markdown export",
+    "medium export markdown",
+    "medium article converter",
     "markdown converter",
     "medium export",
     "blog converter",
     "markdown tool",
-    "mdify",
     "medium markdown",
     "article converter",
-    "content migration"
+    "content migration",
+    "medium exporter",
+    "medium downloader markdown",
+    "export medium to markdown",
+    "medium content converter",
+    "free medium converter",
+    "online markdown converter",
+    "medium backup markdown",
   ],
   authors: [{ name: "Vedant Lavale", url: "https://github.com/vedantlavale" }],
   creator: "Vedant Lavale",
@@ -55,24 +73,27 @@ export const metadata: Metadata = {
     type: "website",
     locale: "en_US",
     url: "https://mdify.vedant.works/",
-    title: "mdify - Convert Medium Articles to Markdown",
-    description: "Convert any Medium article to clean, editable Markdown format instantly. Free online tool for content creators and developers.",
-    siteName: "mdify",
+    title: "mdify - Convert Medium to Markdown | Free Medium to MD Converter",
+    description:
+      "mdify instantly converts Medium articles to Markdown format. Free, fast, and easy-to-use online tool for developers and writers. Export Medium posts to clean MD files.",
+    siteName: "mdify - Medium to Markdown Converter",
     images: [
       {
         url: "/og-image.png",
         width: 1200,
         height: 630,
-        alt: "mdify - Medium to Markdown Converter",
+        alt: "mdify - Free Medium to Markdown Converter Tool",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "mdify - Convert Medium Articles to Markdown",
-    description: "Convert any Medium article to clean, editable Markdown format instantly. Free online tool for content creators and developers.",
+    title: "mdify - Convert Medium to Markdown | Free MD Converter",
+    description:
+      "mdify converts Medium articles to Markdown instantly. Free online Medium to MD converter for developers and writers. Export Medium posts with one click.",
     creator: "@vedantlavale",
     images: ["/og-image.png"],
+    site: "@vedantlavale",
   },
   alternates: {
     canonical: "https://mdify.vedant.works/",
@@ -96,32 +117,85 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const structuredData = {
-    "@context": "https://schema.org",
-    "@type": "WebApplication",
-    "name": "mdify",
-    "description": "Convert Medium articles to Markdown format instantly. Free online tool for content creators and developers.",
-    "url": "https://mdify.vedant.works/",
-    "applicationCategory": "ProductivityApplication",
-    "operatingSystem": "Web Browser",
-    "offers": {
-      "@type": "Offer",
-      "price": "0",
-      "priceCurrency": "USD"
+  const structuredData = [
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      name: "mdify - Medium to Markdown Converter",
+      alternateName: ["mdify", "Medium to MD", "Medium Markdown Converter"],
+      description:
+        "mdify is a free online tool to convert Medium articles to Markdown format instantly. Transform Medium posts to clean, editable MD files for developers, writers, and content creators.",
+      url: "https://mdify.vedant.works/",
+      applicationCategory: "ProductivityApplication",
+      operatingSystem: "Web Browser",
+      browserRequirements: "Requires JavaScript. Requires HTML5.",
+      offers: {
+        "@type": "Offer",
+        price: "0",
+        priceCurrency: "USD",
+        availability: "https://schema.org/InStock",
+      },
+      creator: {
+        "@type": "Person",
+        name: "Vedant Lavale",
+        url: "https://github.com/vedantlavale",
+      },
+      keywords:
+        "mdify, medium to markdown, medium to md, convert medium, markdown converter, medium export",
+      featureList: [
+        "Convert Medium articles to Markdown format",
+        "Medium to MD conversion in one click",
+        "Clean and editable Markdown output",
+        "Instant conversion with no delays",
+        "Free to use with no registration required",
+        "Export Medium posts to Markdown files",
+        "Preserve formatting and code blocks",
+        "Real-time Markdown preview",
+        "Download as .md files",
+        "Copy to clipboard functionality",
+      ],
+      screenshot: "https://mdify.vedant.works/og-image.png",
+      aggregateRating: {
+        "@type": "AggregateRating",
+        ratingValue: "5",
+        ratingCount: "1",
+        bestRating: "5",
+        worstRating: "1",
+      },
     },
-    "creator": {
-      "@type": "Person",
-      "name": "Vedant Lavale",
-      "url": "https://github.com/vedantlavale"
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      name: "mdify",
+      url: "https://mdify.vedant.works/",
+      logo: "https://mdify.vedant.works/logo.svg",
+      sameAs: [
+        "https://github.com/vedantlavale/medium-to-md",
+        "https://twitter.com/vedantlavale",
+      ],
+      founder: {
+        "@type": "Person",
+        name: "Vedant Lavale",
+        url: "https://vedant.works/",
+      },
+      description:
+        "Free online tool to convert Medium articles to Markdown format instantly",
     },
-    "featureList": [
-      "Convert Medium articles to Markdown",
-      "Clean and editable output",
-      "Instant conversion",
-      "Free to use",
-      "No registration required"
-    ]
-  };
+    {
+      "@context": "https://schema.org",
+      "@type": "SoftwareSourceCode",
+      name: "mdify",
+      description:
+        "Open source Medium to Markdown converter built with Next.js",
+      codeRepository: "https://github.com/vedantlavale/medium-to-md",
+      programmingLanguage: "TypeScript",
+      runtimePlatform: "Next.js",
+      author: {
+        "@type": "Person",
+        name: "Vedant Lavale",
+      },
+    },
+  ];
 
   return (
     <html lang="en">
@@ -132,7 +206,6 @@ export default function RootLayout({
             __html: JSON.stringify(structuredData),
           }}
         />
-
       </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} ${bricolageGrotesque.variable} antialiased`}

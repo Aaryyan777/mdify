@@ -1,12 +1,37 @@
+# mdify - Medium to Markdown Converter
+# Allow all search engines to crawl
+
 User-agent: *
 Allow: /
+Allow: /editor
+Allow: /how-to-convert-medium-to-markdown
+Allow: /features
 
-# Optimize crawl budget
+# Optimize crawl budget - allow convert API, block other APIs
 Allow: /api/convert
 Disallow: /api/
+Disallow: /_next/
+Disallow: /node_modules/
 
 # Sitemaps
 Sitemap: https://mdify.vedant.works/sitemap.xml
 
-# Crawl-delay for respectful crawling
+# Special rules for major search engines
+User-agent: Googlebot
+Allow: /
+Crawl-delay: 0
+
+User-agent: Bingbot
+Allow: /
+Crawl-delay: 0
+
+User-agent: Slurp
+Allow: /
 Crawl-delay: 1
+
+# Block bad bots
+User-agent: AhrefsBot
+Crawl-delay: 10
+
+User-agent: SemrushBot
+Crawl-delay: 10

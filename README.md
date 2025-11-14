@@ -1,6 +1,8 @@
-# mdify
+# mdify - Free Medium to Markdown Converter
 
-Convert Medium articles to clean, editable Markdown format instantly. A free, fast, and user-friendly web application built with Next.js.
+Convert Medium articles to clean, editable Markdown format instantly. **mdify** is the best free Medium to MD converter - a fast, user-friendly web application built with Next.js for developers and writers.
+
+🔗 **Live Demo:** [mdify.vedant.works](https://mdify.vedant.works/)
 
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 [![Next.js](https://img.shields.io/badge/Next.js-16.0-black)](https://nextjs.org/)
@@ -8,22 +10,45 @@ Convert Medium articles to clean, editable Markdown format instantly. A free, fa
 
 ## Overview
 
-**mdify** is a web application that transforms Medium articles into properly formatted Markdown files. Perfect for developers, writers, and content creators who need portable, standardized content that works with GitHub, GitLab, documentation sites, and any Markdown processor.
+**mdify** is a powerful web application that instantly transforms Medium articles into properly formatted Markdown files. It's the #1 free **Medium to Markdown converter** for developers, writers, and content creators who need portable, standardized content that works seamlessly with GitHub, GitLab, Hugo, Jekyll, documentation sites, and any Markdown processor.
+
+**Why mdify?**
+
+- 🚀 Lightning fast Medium to MD conversion (2-5 seconds)
+- ✨ Clean, properly formatted Markdown output
+- 💯 100% free with unlimited conversions
+- 🔒 Privacy-focused - no data storage
+- 📝 Live preview editor with real-time rendering
+- 💾 Download as .md files or copy to clipboard
+
+**Popular searches:** medium to markdown, medium to md, convert medium article, mdify, medium markdown converter, export medium to markdown
 
 ## Features
 
-- **Instant Conversion**: Convert any Medium article to Markdown in seconds
-- **Live Preview**: Real-time split-screen editor with Markdown rendering
-- **Syntax Highlighting**: Code blocks are properly formatted with syntax highlighting
-- **Format Preservation**: Maintains headings, bold text, italics, links, lists, and images
-- **Responsive Design**: Works seamlessly on desktop and mobile devices
-- **Copy & Download**: Easy clipboard copy and file download functionality
-- **No Registration**: Free to use, no sign-up required, no limits
-- **Clean Output**: Removes Medium UI elements and generates clean Markdown
+### Core Features
 
-## Demo
+- ⚡ **Instant Medium to Markdown Conversion**: Convert any Medium article to MD format in 2-5 seconds
+- 👁️ **Live Preview Editor**: Real-time split-screen editor with Markdown rendering
+- 🎨 **Format Preservation**: Perfectly maintains headings, bold, italics, links, lists, code blocks, and images
+- 💻 **Syntax Highlighting**: Code blocks properly formatted with language-specific highlighting
+- 📱 **Responsive Design**: Works seamlessly on desktop, tablet, and mobile devices
+- 💾 **Multiple Export Options**: Download as .md file or copy to clipboard instantly
+- 🆓 **100% Free**: No registration, no limits, no hidden fees - unlimited conversions
+- 🔒 **Privacy First**: No data storage, no tracking, all processing in real-time
+- ✨ **Clean Output**: Removes Medium UI clutter and generates pure, standards-compliant Markdown
 
-Visit [mdify.vedant.works](https://mdify.vedant.works/) to try it out!
+### Perfect For
+
+- 👨‍💻 **Developers**: Export tutorials to GitHub, create documentation, backup technical posts
+- ✍️ **Writers**: Backup Medium stories, cross-post content, migrate to personal blogs
+- 📚 **Content Creators**: Repurpose content, build Markdown libraries, archive articles
+- 🏢 **Teams**: Standardize content format, create knowledge bases, maintain backups
+
+## 🚀 Live Demo
+
+**Try mdify now:** [mdify.vedant.works](https://mdify.vedant.works/)
+
+No sign-up required. Just paste a Medium URL and convert!
 
 ## Tech Stack
 
@@ -50,12 +75,14 @@ Visit [mdify.vedant.works](https://mdify.vedant.works/) to try it out!
 ### Installation
 
 1. Clone the repository:
+
 ```bash
 git clone https://github.com/yourusername/mdify.git
 cd mdify
 ```
 
 2. Install dependencies:
+
 ```bash
 npm install
 # or
@@ -67,6 +94,7 @@ bun install
 ```
 
 3. Run the development server:
+
 ```bash
 npm run dev
 # or
@@ -114,14 +142,24 @@ mdify/
 
 ## How It Works
 
+mdify uses advanced parsing algorithms to convert Medium articles to Markdown:
+
 1. **URL Validation**: Validates that the provided URL is a valid Medium article
-2. **HTML Fetching**: Retrieves the article HTML using axios
-3. **Parsing**: Uses Cheerio to parse and navigate the HTML DOM
-4. **Metadata Extraction**: Extracts title, author information, and other metadata
-5. **Cleaning**: Removes Medium-specific UI elements and ads
-6. **Conversion**: Converts cleaned HTML to Markdown using Turndown
-7. **Post-processing**: Filters unwanted lines and cleans up the Markdown
-8. **Preview**: Displays the result in a split-screen editor with live preview
+2. **HTML Fetching**: Retrieves the article HTML content using axios
+3. **Parsing**: Uses Cheerio to parse and navigate the HTML DOM structure
+4. **Metadata Extraction**: Extracts title, author information, publication date, and metadata
+5. **Cleaning**: Intelligently removes Medium-specific UI elements, ads, and clutter
+6. **Markdown Conversion**: Converts cleaned HTML to Markdown using optimized Turndown configuration
+7. **Post-processing**: Filters unwanted elements and cleans up the Markdown output
+8. **Live Preview**: Displays result in split-screen editor with real-time preview and editing
+
+**Technical Details:**
+
+- GitHub Flavored Markdown (GFM) output
+- Preserves code block syntax highlighting
+- Handles embedded content intelligently
+- Maintains image URLs and alt text
+- Proper list and table formatting
 
 ## API Reference
 
@@ -132,9 +170,11 @@ mdify/
 Converts a Medium article to Markdown format.
 
 **Query Parameters:**
+
 - `url` (required): The Medium article URL to convert
 
 **Response:**
+
 ```json
 {
   "error": false,
@@ -144,6 +184,7 @@ Converts a Medium article to Markdown format.
 ```
 
 **Error Response:**
+
 ```json
 {
   "error": true,
@@ -152,6 +193,7 @@ Converts a Medium article to Markdown format.
 ```
 
 **Status Codes:**
+
 - `200`: Success
 - `400`: Invalid request (no URL provided)
 - `429`: Rate limit exceeded
@@ -162,6 +204,7 @@ Converts a Medium article to Markdown format.
 ### Turndown Configuration
 
 The Turndown service is configured in `src/lib/medium/turndown.ts` with custom rules for:
+
 - Code blocks
 - Image handling
 - Link formatting
@@ -170,6 +213,7 @@ The Turndown service is configured in `src/lib/medium/turndown.ts` with custom r
 ### Medium-Specific Cleaning
 
 The conversion process includes:
+
 - Removal of Medium UI elements (clap buttons, share buttons, etc.)
 - Filtering of empty paragraphs and divs
 - Proper handling of embedded content
@@ -198,15 +242,21 @@ Contributions are welcome! Please feel free to submit a Pull Request.
 4. Push to the branch (`git push origin feature/amazing-feature`)
 5. Open a Pull Request
 
+## SEO & Keywords
+
+**mdify** - medium to markdown, medium to md, convert medium article, medium markdown converter, medium to markdown converter, export medium to markdown, medium article to md, free markdown converter, medium downloader, medium backup tool, medium migration, convert medium post, medium exporter, markdown converter online, medium content converter
+
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
-## Support
+## Support the Project
 
-If you find this tool useful, consider supporting the project:
+If **mdify** has helped you convert Medium articles to Markdown, consider supporting the project:
 
 [![Buy Me A Coffee](https://img.shields.io/badge/Buy%20Me%20A%20Coffee-Support-yellow)](https://buymeacoffee.com/0xVedant)
+
+Your support helps keep mdify free and continuously improved!
 
 ## Acknowledgments
 
@@ -217,8 +267,22 @@ If you find this tool useful, consider supporting the project:
 
 ## Author
 
-Created by [Vedant](https://vedant.works/)
+Created with ❤️ by [Vedant Lavale](https://vedant.works/)
+
+- GitHub: [@vedantlavale](https://github.com/vedantlavale)
+- Twitter: [@vedantlavale](https://twitter.com/vedantlavale)
+- Website: [vedant.works](https://vedant.works/)
 
 ---
 
-**Note**: This tool is not affiliated with or endorsed by Medium. It's designed for personal use to help users convert publicly available articles to Markdown format.
+## Related Resources
+
+- 📖 [How to Convert Medium to Markdown](https://mdify.vedant.works/how-to-convert-medium-to-markdown) - Complete guide
+- ⚡ [mdify Features](https://mdify.vedant.works/features) - Full feature list
+- 🔧 [API Documentation](https://mdify.vedant.works/api/convert) - For developers
+
+---
+
+**Note**: This tool is not affiliated with or endorsed by Medium. mdify is designed for personal use to help users convert publicly available Medium articles to Markdown format for backup, migration, and content management purposes.
+
+**Disclaimer**: Please respect Medium's Terms of Service and copyright laws. Only convert content you have rights to use.
