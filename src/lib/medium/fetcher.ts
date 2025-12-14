@@ -17,7 +17,7 @@ export async function fetchArticleHtml(
     try {
       const response = await axios.get(url, {
         headers: HEADERS,
-        timeout: 10000, 
+        timeout: 30000, 
         validateStatus: (status) => status < 500, 
       });
 
@@ -53,6 +53,18 @@ export async function fetchArticleHtml(
     } catch (error) {
       lastError = error as Error;
 
+      // Log the error details
+      if (axios.isAxiosError(error)) {
+        console.error(`Fetch attempt ${attempt + 1} failed:`, {
+          status: error.response?.status,
+          statusText: error.response?.statusText,
+          data: error.response?.data?.substring(0, 200), // first 200 chars
+          message: error.message,
+        });
+      } else {
+        console.error(`Fetch attempt ${attempt + 1} failed:`, error);
+      }
+
       // Don't retry on client errors (4xx)
       if (axios.isAxiosError(error)) {
         const axiosError = error as AxiosError;
@@ -68,7 +80,7 @@ export async function fetchArticleHtml(
 
       // Exponential backoff for retries
       if (attempt < maxRetries - 1) {
-        const delay = Math.min(1000 * Math.pow(2, attempt), 10000); // Max 10 seconds
+        const delay = Math.min(2000 * Math.pow(2, attempt), 30000); // Max 30 seconds
         console.log(
           `Fetch failed. Retrying in ${delay / 1000}s (${attempt + 1}/${maxRetries})...`
         );

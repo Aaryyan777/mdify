@@ -43,18 +43,44 @@ export function initializeTurndownService(): TurndownService {
   service.addRule("mediumFigure", {
     filter: "figure",
     replacement: (_, node) => {
+      const img = node.querySelector("img");
       const source = node.querySelector("source");
-      const srcset = source?.getAttribute("srcset") || "";
+      let imgSrc = "";
+      if (source && source.getAttribute("srcset")) {
+        const srcset = source.getAttribute("srcset")!;
+        const sources = srcset.split(", ");
+        const lastSource = sources[sources.length - 1];
+        imgSrc = lastSource.split(" ")[0];
+      } else if (img && img.getAttribute("src")) {
+        imgSrc = img.getAttribute("src")!;
+      }
       const caption =
         node.querySelector("figcaption")?.textContent || "captionless image";
 
-      if (srcset) {
-        const srcList = srcset.split(" ");
-        const bestQualityImgSrc = srcList[srcList.length - 2];
-        return `![${caption}](${bestQualityImgSrc})`;
+      if (imgSrc) {
+        if (imgSrc.startsWith("/")) {
+          imgSrc = `https://medium.com${imgSrc}`;
+        }
+        return `![${caption}](${imgSrc})`;
       }
 
       return `<b>[other]${caption}[/other]</b>`;
+    },
+  });
+
+  service.addRule("mediumImg", {
+    filter: "img",
+    replacement: (_, node) => {
+      const src = node.getAttribute("src");
+      const alt = node.getAttribute("alt") || "";
+      if (src) {
+        let imgSrc = src;
+        if (imgSrc.startsWith("/")) {
+          imgSrc = `https://medium.com${imgSrc}`;
+        }
+        return `![${alt}](${imgSrc})`;
+      }
+      return "";
     },
   });
 
