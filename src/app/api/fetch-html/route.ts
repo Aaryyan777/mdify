@@ -53,6 +53,7 @@ export async function GET(request: Request) {
         );
       },
       replacement: function (content, node) {
+        if (!content.trim()) return ''; // Remove links with no text
         var href = node.getAttribute('href');
         if (href && href.startsWith('/')) {
           href = "https://medium.com" + href;
