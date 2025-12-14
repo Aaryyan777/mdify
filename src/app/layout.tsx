@@ -20,8 +20,7 @@ const bricolageGrotesque = Bricolage_Grotesque({
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://mdify.vedant.works/"),
-  title:
-    "mdify - Convert Medium Articles to Markdown | Free Medium to MD Converter",
+  title: "mdify - Free Medium to Markdown Converter",
   description:
     "mdify is the best free tool to convert Medium articles to Markdown. Instantly transform Medium posts to MD format with our online converter. Clean, editable Markdown exports for developers and writers.",
   keywords: [
